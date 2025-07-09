@@ -1,76 +1,51 @@
 module.exports = {
   root: true,
+  parser: '@typescript-eslint/parser', // TypeScript用パーサー
+  parserOptions: {
+    ecmaVersion: 2020, // 最新のECMAScript仕様
+    sourceType: 'module', // ES Modules対応
+    ecmaFeatures: {
+      jsx: true, // JSXをサポート
+    },
+    project: ['./tsconfig.json'], // tsconfigを参照して型情報も利用
+  },
   env: {
     browser: true,
-    es2021: true,
     node: true,
+    es2020: true,
   },
+  plugins: ['@typescript-eslint', 'react', 'react-hooks'],
   extends: [
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "plugin:react-hooks/recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:@next/next/recommended",
-    "airbnb",
-    "airbnb/hooks",
-    "prettier",
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended', // TypeScript基本ルール
+    'plugin:@typescript-eslint/recommended-requiring-type-checking', // 型チェックが必要なルール
+    'plugin:react/recommended',
+    'plugin:react-hooks/recommended',
+    'prettier', // Prettierと競合するルールを無効化
   ],
-  parser: "@typescript-eslint/parser",
-  parserOptions: {
-    ecmaFeatures: {
-      jsx: true,
-    },
-    ecmaVersion: 13,
-    sourceType: "module",
-  },
-  plugins: ["react", "react-hooks", "@typescript-eslint", "import", "prettier"],
   rules: {
-    // prettier のフォーマット違反はエラー扱い
-    "prettier/prettier": ["error"],
+    // 型安全に関わるルールを厳格に
+    '@typescript-eslint/no-explicit-any': 'error', // any型はできるだけ避ける
+    '@typescript-eslint/explicit-function-return-type': ['error', { allowExpressions: true }], // 戻り値の型は明示推奨
+    '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }], // 未使用変数はエラー、ただし_始まりは許容
+    '@typescript-eslint/explicit-module-boundary-types': 'error'
 
-    // React 17以降は import React 不要なので警告OFF
-    "react/react-in-jsx-scope": "off",
+    // コード品質と可読性
+    'no-console': 'warn', // console.logは警告（必要に応じてoff可能）
+    'no-debugger': 'error', // debuggerはエラー
+    'consistent-return': 'error', // 関数は一貫した戻り値を持つべき
+    'prefer-const': 'error', // 変更されない変数はconstを使う
+    'react/react-in-jsx-scope': 'off', // React 17以降は不要
 
-    // 変数宣言はconst優先、変更時はletを使う
-    "prefer-const": "error",
+    // React Hooksルール（必須）
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'error',
 
-    // JSX内でのファイル拡張子はtsx限定（jsxは不可）
-    "react/jsx-filename-extension": [1, { extensions: [".tsx", ".jsx"] }],
-
-    // 使ってない変数は警告（引数で使わない変数は_から始めればOK）
-    "no-unused-vars": "warn",
-
-    // import 順序を整える（アルファベット順、外部→内部）
-    "import/order": [
-      "error",
-      {
-        groups: ["builtin", "external", "internal", "parent", "sibling", "index"],
-        "newlines-between": "always",
-        alphabetize: {
-          order: "asc",
-          caseInsensitive: true,
-        },
-      },
-    ],
-
-    // JSXのpropsでスプレッド演算子は控えめに
-    "react/jsx-props-no-spreading": "off",
-
-    // 関数の戻り値は型推論に任せるが明示型推奨
-    "@typescript-eslint/explicit-function-return-type": "warn",
-
-    // console.logは開発時OKだが本番では警告にしたい場合
-    "no-console": ["warn", { allow: ["warn", "error"] }],
-
-    // 強制的な改行はPrettierに任せる
-    "linebreak-style": "off",
+    // その他必要に応じて調整可能
   },
   settings: {
     react: {
-      version: "detect",
-    },
-    "import/resolver": {
-      typescript: {}, // tsconfig.json のパス解決を有効化
+      version: 'detect', // インストール済みReactバージョンを自動検出
     },
   },
 };
