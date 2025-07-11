@@ -1,7 +1,63 @@
 {
-  "editor.formatOnSave": true,
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
-  },
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
+	"workbench.colorTheme": "GitHub Dark Default",
+	"remote.autoForwardPortsFallback": 0,
+	"chat.agent.maxRequests": 0,
+	"github.copilot.chat.codesearch.enabled": true,
+	"editor.formatOnSave": true,
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": "explicit"
+	},
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	// Prettier拡張機能用設定
+	"prettier.semi": true, // セミコロンを付ける
+	"prettier.singleQuote": true, // シングルクォートを使用
+	"prettier.trailingComma": "es5", // 配列やオブジェクトの末尾にカンマ（ES5）
+	"prettier.printWidth": 100, // 1行の最大長
+	"prettier.tabWidth": 2, // インデント幅
+	"prettier.useTabs": true, // スペースでインデント
+	"prettier.bracketSpacing": true, // オブジェクトリテラルの中のスペース
+	"prettier.arrowParens": "always", // アロー関数の引数が1つでも () を付ける
+	"prettier.jsxSingleQuote": false, // JSXではダブルクォートを使う
+	"prettier.endOfLine": "lf",
+	// ESLint拡張機能用設定
+	"eslint.options": {
+		"parser": "@typescript-eslint/parser",
+		"parserOptions": {
+			"ecmaVersion": 2020,
+			"sourceType": "module",
+			"ecmaFeatures": { "jsx": true },
+			"project": ["./tsconfig.json"]
+		},
+		"env": {
+			"browser": true,
+			"node": true,
+			"es2020": true
+		},
+		"plugins": ["@typescript-eslint", "react", "react-hooks"],
+		"extends": [
+			"eslint:recommended",
+			"plugin:@typescript-eslint/recommended",
+			"plugin:@typescript-eslint/recommended-requiring-type-checking",
+			"plugin:react/recommended",
+			"plugin:react-hooks/recommended",
+			"prettier"
+		],
+		"rules": {
+			"@typescript-eslint/no-explicit-any": "error",
+			"@typescript-eslint/explicit-function-return-type": ["error", { "allowExpressions": true }],
+			"@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+			"@typescript-eslint/explicit-module-boundary-types": "error",
+			"no-console": "warn",
+			"no-debugger": "error",
+			"consistent-return": "error",
+			"prefer-const": "error",
+			"react/react-in-jsx-scope": "off",
+			"react-hooks/rules-of-hooks": "error",
+			"react-hooks/exhaustive-deps": "error"
+		},
+		"settings": {
+			"react": { "version": "detect" }
+		}
+	},
+	"eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"]
 }
