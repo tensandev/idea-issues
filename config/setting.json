@@ -8,18 +8,16 @@
 		"source.fixAll.eslint": "explicit"
 	},
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
-	// Prettier拡張機能用設定
-	"prettier.semi": true, // セミコロンを付ける
-	"prettier.singleQuote": true, // シングルクォートを使用
-	"prettier.trailingComma": "es5", // 配列やオブジェクトの末尾にカンマ（ES5）
-	"prettier.printWidth": 100, // 1行の最大長
-	"prettier.tabWidth": 2, // インデント幅
-	"prettier.useTabs": true, // スペースでインデント
-	"prettier.bracketSpacing": true, // オブジェクトリテラルの中のスペース
-	"prettier.arrowParens": "always", // アロー関数の引数が1つでも () を付ける
-	"prettier.jsxSingleQuote": false, // JSXではダブルクォートを使う
+	"prettier.semi": true,
+	"prettier.singleQuote": true,
+	"prettier.trailingComma": "es5",
+	"prettier.printWidth": 100,
+	"prettier.tabWidth": 2,
+	"prettier.useTabs": true,
+	"prettier.bracketSpacing": true,
+	"prettier.arrowParens": "always",
+	"prettier.jsxSingleQuote": false,
 	"prettier.endOfLine": "lf",
-	// ESLint拡張機能用設定
 	"eslint.options": {
 		"parser": "@typescript-eslint/parser",
 		"parserOptions": {
