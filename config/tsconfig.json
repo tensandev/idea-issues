@@ -4,7 +4,9 @@
     "module": "ESNext",
     "lib": [
       "ES2020",
-      "DOM"
+      "DOM",
+      "dom.iterable",
+      "esnext"
     ],
     "strict": true,
     "noImplicitAny": true,
@@ -15,7 +17,7 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "esModuleInterop": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "forceConsistentCasingInFileNames": true,
@@ -32,19 +34,17 @@
         "name": "next"
       }
     ],
-    "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "src/*"
-      ]
+      "@/*": ["./*"]
     }
   },
   "include": [
-    "src/**/*",
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
     ".next/types/**/*.ts"
   ],
   "exclude": [
-    "node_modules",
-    "dist"
+    "node_modules"
   ]
 }
