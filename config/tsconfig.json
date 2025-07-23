@@ -2,7 +2,10 @@
   "compilerOptions": {
     "target": "ES2020",
     "module": "ESNext",
-    "lib": ["ES2020", "DOM"],
+    "lib": [
+      "ES2020",
+      "DOM"
+    ],
     "strict": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
@@ -20,12 +23,19 @@
     "skipLibCheck": false,
     "removeComments": true,
     "incremental": true,
-    "jsx": "react-jsx",
+    "jsx": "preserve",
     "allowJs": true,
-    "checkJs": true
+    "checkJs": true,
+    "noEmit": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
   "include": [
     "src/**/*",
+    ".next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules",
