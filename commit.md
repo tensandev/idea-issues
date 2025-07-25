@@ -2,7 +2,7 @@
 ```<type>(<scope>): <description>```
 
 # 具体例
-```feat(auth): JWT認証機能を追加```
+```add(auth): JWT認証機能を追加```
 
 ```fix(user): パスワード検証ロジックを修正```
 
